@@ -14,11 +14,14 @@ public class main {
         humano.cpf = "123.456.789.0";
         humano.data = new Date();
         humano.Nome = "Carlos";
+        humano.sexo = 'M';
+        humano.idade = 20;
 
         instituicao.numFuncionarios = 1000;
         instituicao.Nome = "Coltec";
         instituicao.cnpj = "00.000.000/0000 - 00";
         instituicao.data = new Date();
+        instituicao.setor = "Informática";
 
         // Criando instâncias dos clientes e associando às contas
         Cliente cliente1 = new Cliente();
@@ -104,6 +107,7 @@ public class main {
         }
 
         System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+
         System.out.println("Nome da Pessoa fisica: " + humano.Nome);
         System.out.println("Cpf da pessoa fisica: " + humano.cpf);
         System.out.println("Data da criacao do cliente (Pessoa física): " + humano.data);
@@ -114,5 +118,10 @@ public class main {
         System.out.println("Nome da empresa: " + instituicao.Nome);
         System.out.println("Data de criacao da empresa: " + instituicao.data);
 
+        System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+
+        System.out.println("<Dados listados dos dois corpos>");
+        humano.imprimir();
+        instituicao.imprimir();
     }
 }
