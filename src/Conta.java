@@ -5,7 +5,9 @@ public class Conta {
     private Cliente DonoConta; // Objeto Cliente que é o dono da conta
     private double SaldoConta; // Saldo da conta
     private double LimiteConta; // Limite da conta
-    private Operacao[] operacoes;
+    private Operacao[] operacao;
+    private operacaoDeposito[] operacoes;
+    private operacaoSaque[] Operacoes;
     private int proximaOperacao;
     private static int totalContas = 0;
 
@@ -16,43 +18,28 @@ public class Conta {
         this.DonoConta = dono; // Instanciando um novo objeto Cliente
         this.SaldoConta = saldo; // Inicializa o saldo como 0
         this.LimiteConta = limite; // Inicializa o limite como 0
-        this.operacoes = new Operacao[1000];
+        this.operacao = new Operacao[1000];
+        this.operacoes = new operacaoDeposito[1000];
+        this.Operacoes = new operacaoSaque[1000];
         this.proximaOperacao = 0;
         Conta.totalContas++;
     }
 
-    // Classe interna Operacao
-    public class Operacao {
-        private Date data;
-        private char tipo;
-        private double valor;
-
-
-        public Operacao(char tipo, double valor) {
-            this.tipo = tipo;
-            this.valor = valor;
-            data = new Date();
-        }
-        public void imprimir() {
-            System.out.println("Tipo: " + tipo + ", Valor: " + valor + ", Data: " + data);
-        }
-    }
+    Scanner entrada = new Scanner(System.in);
     public void AdicionaOperacao(char tipo, double valor) {
+
         // Encontrar a primeira posição vazia no array
         int indiceVazio = 0;
         while (indiceVazio < operacoes.length && operacoes[indiceVazio] != null) {
             indiceVazio++;
         }
-
-
         // Adicionar uma nova operação na primeira posição vazia encontrada
         if (indiceVazio < operacoes.length) {
-            operacoes[indiceVazio] = new Operacao(tipo, valor);
+            operacao[indiceVazio] = new Operacao(tipo, valor);
         } else {
             System.out.println("Não há espaço suficiente para adicionar mais operações.");
         }
     }
-
 
     // Método para realizar um depósito
     public void deposito(double valor) {
@@ -85,19 +72,12 @@ public class Conta {
     }
 
     // Método para imprimir os detalhes de uma conta
-    public void imprimir(Conta contaQualquer) {
-        System.out.println(contaQualquer.NumConta); // Imprime o número da conta
-        System.out.println(contaQualquer.DonoConta.Nome); // Imprime o nome do dono da conta
-        System.out.println(contaQualquer.SaldoConta); // Imprime o saldo da conta
-        System.out.println(contaQualquer.LimiteConta); // Imprime o limite da conta
-    }
 
+    public void imprimir() {
+        System.out.println("======= Extrato Conta " + this.NumConta + " ======");
 
-    public void imprimirExtrato() {
-        System.out.println("======= Extrato Conta " + this.NumConta + "======");
-        for(int i = 0; i < proximaOperacao; i++) {
-            operacoes[i].imprimir();
-        }
+            System.out.println("Numero da conta: " + NumConta + " Dono da conta: " + DonoConta.Nome + " Saldo: " + SaldoConta + " Limite: " + LimiteConta);
+
         System.out.println("====================");
     }
 
