@@ -1,6 +1,6 @@
 import java.util.*;
 public class main {
-    public static void main(String[] args) {
+    public void main(String[] args) {
 
 
         // Criando instâncias das contas
@@ -43,10 +43,10 @@ public class main {
 
 
 
-        conta2.setLimiteConta(45000.0);
+        conta2.setLimite(45000.0);
 
 
-        if(conta1.setNumConta() == conta2.setNumConta()){
+        if(conta1.setNumero(this.NumConta) == conta2.setNumero(this.NumConta)){
             System.out.println("Sao iguais!");
 
 
@@ -108,10 +108,10 @@ public class main {
 
         if(letra == 'I'){
             System.out.println("Imprimindo extrato da conta de Icaro:");
-            conta1.ImprimirExtrato(conta1.operacoes);
+            conta1.imprimirExtrato();
         }if(letra == 'M'){
             System.out.println("Imprimindo extrato da conta de Maria:");
-            conta1.ImprimirExtrato(conta1.operacoes);
+            conta1.imprimirExtrato();
         }
 
     }
